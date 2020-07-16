@@ -1,0 +1,59 @@
+This file is to recount to the best of my memory the steps that I have taken to get to this digital version controlled attempt.
+As it comes to me or as I look back through my old documents I'll try to update this to reflect it to be more accurate.
+Also, I'll try to get some rough dates on here as I'm going through my stack of notes.
+
+
+Something clicked with prime numbers while pursuing an associates degree several years ago.
+I started to find them fascinating.
+On graph paper, I started hand writting down the prime numbers in the order that I came across them from smallest to largest.
+At first I was doing them in my head, but as the numbers got larger I had to start writting down the divisions on scratch paper.
+It quickly became daunting to do it by hand and switched to my trusty TI-83 calculator to do the calculations.
+A few patterns emerged:
+	First, that I only needed to be dividing by prime numbers. (e.g. dividing by 4 would be pointless because if it was not divisible by 2 it couldn't be divisible by 4 due to the concept of a factor tree)
+	Second, (I eventually found) that I only needed to be dividing the integers smaller than the square root. (because the quotient ended up being smaller than the divisor, which I had already checked numbers smaller than the divisor so it seemed pointless to do it again)
+
+Using a calculator to do the calculations was still a very daunting process.
+I was glad that I found these patterns before I tried to automate the process.
+
+I taught myself how to write a program on the TI-83 using the built in gui found in the user manual.
+The program would evolve the higher the number I was checking went.
+It was basically a gauntlet of if-statments in which I would add (read: hard-code) each of the found lower primes into the program depending on the range of numbers I was working with.
+When the program found a prime it would pause on that number and wait for me to write it down.
+After hitting enter, it would chug along until it got to the next one.
+This worked pretty well, but eventually the program began to become extremely long and annoying to update.
+Apart from that, the higher I was calculating the longer it would take to find each prime.
+After writting the prime number 27,283 I decided that I needed a better solution for not only finding them, but documenting them as well.
+
+I had taken a C++ class decided that was the language I would use to try to write a more sophisticated program.
+I wrote a very rough version that was slow and didn't utilize all the things I already found.
+I let it run for a significant amount of time until it eventually output text files of all the prime numbers up to the limits of an integer. (a little over 2 billion)
+
+At this point I didn't know what to do because the built in functions for calculating the square root relied on numbers being stored as integers.
+At first I could find something that would allow a square root on a data type that could hold higher values, like unsigned integer or long integer.
+However, what I ran into pretty quickly was that even if I doubled the highest number that I could square root, that would still be insignificant compared to the numbers I was aiming for. (thousands of digits long vs. 10 digits long)
+I figured I would have to either make up my own data types and/or write functions for how to do basic math operations on a larger data type.
+I never took enough time to do this in C++. However, thought that strings would be long enough.
+
+
+I put the project down for many years.
+When I picked it back up I couldn't remember where I left off, so I set out to just see what else was out there.
+This is where I learned about the Sieve of Eratosthenes, Mersenne primes, and all kinds of interesting things related to prime numbers.
+Among them were techniques others had come up with for calculating these numbers.
+However, I try to be very cautious when reading about how others have undertook the efforts of finding these numbers, as I don't want to limit my imagination to what can be done.
+
+
+I wrote a couple dozen batch file scripts to take care of some repetative tasks that I didn't enjoy doing often.
+Over the past few years I have been trying to learn to program with python and have written a few single purpose apps.
+
+I will be using python where all my other efforts have left off.
+I enjoy the readability and forgiving nature that the syntax carries.
+Also, I think it will be a fun experience.
+
+Using github is because I want to learn something new and share the work I have so far if anyone is interested.
+The closest thing I can relate to github is using a PDM/PLM system to manage CAD data.
+
+From what I have seen so far, something I find interesting is the merge branch feature.
+I think it's interesting that people can be working on different parts and as they are finished with their individual parts they can contribute it back to the main version.
+I will have to try and build the program into pieces so that it can take advantage of work being split up.
+I'm interested to see how far I can get with this.
+Very cool.
