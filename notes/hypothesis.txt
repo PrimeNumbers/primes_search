@@ -3,7 +3,7 @@ The file contains a list of my hypothesis that may or may not have been proven (
 
 1
 For any multi-digit positive number in question, N, and the square root of said number, S.
-If one were to attempt to divide N by every prime number up to and including the closest integer (rounded down) to S, it would prove that N is a prime number if there is no remainder.
+If one were to attempt to divide N by every prime number up to and including the closest integer (rounded down) to S, it would prove that N is a prime number.
 
 2
 It would be faster to have a program pre-find candidate prime numbers that can be checked later by sub programs.
