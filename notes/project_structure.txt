@@ -1,0 +1,167 @@
+This file is to help define the structure for the project and direction of efforts I want to take.
+It also has stream of consiousness mixed in for fun.
+
+
+I need to build unit testing into my program from the beginning.
+
+
+There needs to be a main file that launches an interface with the buttons/options:
+	status of the file/folder structure
+		run report: should output how many prime numbers have been found, it might make sense to hash the folders and files so that once a qty is calculated for them it does not need to be recalculated again. If the hash does not match what it has stored in the index then it will regenerate it.
+			Starting at the folder level, for each folder that does not match, it'll check the hash on each file, if the hash on the file doesn't match then it'll ask if you want to rebuild the index for this folder: "location/my_folder" or this file "location/my_folder/my_file_number" or for all files/folders found.
+			It should be able to put a human readable report before running through all files/folders as to which have not been hashed and included in the qty calcuation.
+			It should output a human readable report that shows which folders/files were hashed and the qty that were added.
+
+	generate next candidates button
+	find next primes button
+	enter a number and find out if it is prime or browse to a specific file to see if the number exists.
+		If the number is larger than the largest known prime then return that.
+		If it is known to not be prime return that.
+		If there is an error in the file format note that. 
+			e.g. file format should be .txt, it should contain only digits, and should be a continuous string without any special characters (newline, tab, etc.)
+	exit
+
+
+
+When generating candidates:
+	The generator should also have checkpoints that can be referenced as starting points if the program is closed abruptly.
+
+	The number of digits on the found primes should be at a minimum of half, rounded-up to the nearest integer, as the candidates being generated.
+	e.g. if the candidate is 9 digits long then all the primes that are 5 digits long (4.5 rounded up). Easier to find, there should be at least 1 prime number that is 6 digits long.
+	This should ensure that all the primes up to and including the square root of the candidate have already been found.
+	
+	Primarily:
+		The generator should have rules built in to avoid generating obviously not prime numbers. aka multi-digit number whose last digit is 0,2,4,5,6, and 8 aka divisible by 2 or 5.
+			This should be pretty straight forward. As long as it keeps track of where it has been it should be pretty easy to tell where it is going.
+			e.g. if the number ends in a 1,3,7 or 9 it needs to add 2,4,2, and 2 respectively to make it end in 3,7,9, or 1 respectively.
+	Secondarily:
+		As well as the less obvious divisible by 3, 7, 11, 13, and 17, and possibly others that have algorithms that can reduce computation time.
+	Thirdly:
+		It may be helpful to take advanatage of primes it has already found to eliminate candidates to be proposed.
+
+	A rough overestimate for seeing how many potential candidates for numbers of N digits long can be found by using this algorithm:
+		1- the number of digits, N, divided by 2
+		2- rounded up to the nearest integer
+		3- 10^rounded up integer
+		4- previous answer multiplied by 0.4
+
+
+When finding the next primes:
+	There should be a checkbox that, if checked, keeps the program running continuously.
+		The checkbox should be able to be unchecked mid-run to let the program come to a natural stopping point when the next iteration is completed.
+
+	
+	It should display some characteristics about the prime number it is looking at.
+		how many digits long it is, the file location of the number in question, where it left off last, current run time (it will have to omit time if it was closed abruptly)
+		there should be a trigger that can be activated to let the program stop at the next checkpoint.
+			initially i'm thinking that it automatically triggers a checkpoint as it moves on to a new file, basically saying this is the next file to check.
+			maybe the manually triggered close will let it save on a specific number within a specific file,
+			If the user wants to close it faster than that, it should be able to close on the current number, but it would have to recheck that number.
+			
+			1-as it moves from file to file (automated checkpoints) in case of improper shutdown or program crash.
+			2-manually trigger to close as soon as it's done
+			3-a dialog box will pop up and let the user know that they can force close it now, but some of the calculations will have to be re-checked.
+
+
+
+Functions that need to exist for finding primes:
+	I will need to use strings to store the really large numbers.
+		I need to be able to do math functions on those strings. (add, subtract, multiply, divide, square root)
+			Addition should be the easiest of the math functions to create.
+			Subtraction will be slightly more involved.
+				Being able to borrow from the next column might prove challenging.
+			Multiplication of large numbers will be at the next difficulty level.
+				The grid style multiplication (e.g. when learning to multiply 3 digit numbers together) seems like a pretty straightforward algorithm.
+				string_addition() will be used to combine the intermediate results.
+			Division might be the next most difficult step.
+				Long devision seems like the best option.
+				It will end up using the addition, subtraction, and multiplication functions.
+			I found an interesting algorithm (todo: add ref) that can calculate the square root of large numbers.
+				It will require the other functions: adding, Subtraction and multiplication in order to run though.
+				The working remainder piece of it will be able to be used to determine if it is prime or not
+			
+
+	There will need to be a generator that will, when called, start at the beginning folder/file and will read each file and return the next found prime number as a string.
+		It will need to be reset at the beginning of a search for a new number.
+
+
+	The file structure will need to be robust and organized. (The primes that could be contained within a C++ integer datatype, took up a few GB worth of text files if I'm remembering correctly. I may need more storage to hold this work.)
+		I'm thinking that the top level will be folder names will be the number of digits.
+		The files may be split into similarly sized csv files. (5MB?, or maybe a sliding scale)
+			At a certain point the file size will be so large that there should only be 1 number in each file.
+		e.g.
+		0001 - will hold all the 1 digit primes (if that is even necessary)
+			0001.txt - may hold the primes: 2,3,5,7
+		0002 - will hold all the 2 digit primes (I'm not sure how many algorithms that can be build into the candidate generator)
+			0001.txt - may hold the primes between 10 and 100
+		0003 - 3 digit primes
+			e.g. inside of this folder:
+			0001.txt - may hold the primes between 100 and 1000
+		0004 - 4 digit primes
+			0001.txt - may hold primes between 1000 and 2000
+			0002.txt - may hold primes between 2000 and 3000
+			etc
+		0005 - 5 digit primes
+			0001.txt - may only be able to hold between 10000 and 15000
+			0002.txt - may only be able to hold between 15000 and 20000
+			0003.txt - may only be able to hold between 20000 and 25000
+			etc
+		0006 - 6 digit primes
+			0001.txt - may only be able to hold between 100000 and 110000
+			0002.txt - may only be able to hold between 110000 and 120000
+			etc
+
+		or maybe I need to make multiple folders inside of the digit folder
+		100000 - 100k digit primes
+			000001 - folder that holds the first batch of primes
+				0001.txt - may hold the first number with 100k digits
+				0002.txt - may hold the 2nd number with 100k digits
+				etc
+			000002 - folder that holds the next batch of primes
+				0001.txt - may hold the nth number with 100k digits
+				0002.txt - may hold the nth+1 number with 100k digits
+		
+		Or maybe it needs to be built recursively such that:
+			If there is a folder it needs to dig down until it reaches a text file.
+			Then it increments through each of the text files in that folder until it reaches the end.
+			After that, it goes up 1 level, if there is another folder in that level then move onto it and dig down to the bottom and increment through those files, otherwise move up another level and if there are no more folders in the top level then it has run out of primes to check with.
+
+
+	There will need to be multiple functions to accomplish whatever file structure is chosen from above:
+		add the next folder to the primes database
+		move recently confirmed prime number into the database
+		generator that incrementally reads next prime in the database
+
+
+	There needs to be some sort of status that the program is still working on a calculation and is not hung up.
+		Maybe once per minute it passes a gauntlet of checks. (if the check passes it checks something deeper)
+			Which number is it working on.
+			what file is it currently using to divide.
+			What stage/operation is it working on. (code names or algorithm stage names)
+			What digit is it currently working on for that operation.
+		
+		Or, it can start off with a basic readout, and if it gets to the point where it might be hung up then adding more information about where it is at might be a good idea.
+			folder/structure/to/current_number.txt
+				Digit length: 3000
+				Runtime: 3 d, 5 h, 20 m, 4 s
+				Proof of last: 5 days, 1 hour, 3 min, 5 sec
+
+			if Proof of last < runtime (or if a checkbox is enabled to show anyway) run additional checks
+			every hour:
+			Existing Primes File Used:
+				folder/structure/to/file.txt
+			every 30 minutes:
+			Algorithm Stage:
+				calculating square root (blank if not needed)
+			every 15 minutes:
+			700 digits out of a maximum of 1500 digits calculated calculated.
+			(I think a report of the checkpoints might be good enough. If they don't have enough resolution, maybe the above ideas could be utilized.)
+
+
+
+
+
+	More of a side note, but I found prime palindromes interesting in their own right and found all the 5 digit prime palindomes, but zero, 6 digit ones.
+		Or, maybe it was 6 and 7 digit respectiely, If I find somthing in my notes that references this in the future. I may update this note or convert it to its own file later.
+		Either way, I think a prime palindrome checker function might be fun to be able to run against the primes database.
+		It could have a list of the folders and/or files it has checked to keep from having to repeat any calculations.
