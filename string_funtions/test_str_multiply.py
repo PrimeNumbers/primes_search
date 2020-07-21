@@ -4,12 +4,13 @@ from str_multiply import multiply
 class TestMultiplyStrings(unittest.TestCase):
 
     def test_obvious_small(self):
-##        self.assertEqual(multiply('1','1'), '1')
-##        self.assertEqual(multiply('2','3'), '6')
-##        self.assertEqual(multiply('123','2'), '246')
-##        self.assertEqual(multiply('2','123'), '246')
+        self.assertEqual(multiply('1','1'), '1')
+        self.assertEqual(multiply('2','3'), '6')
+        self.assertEqual(multiply('123','2'), '246')
+        self.assertEqual(multiply('2','123'), '246')
         self.assertEqual(multiply('999','999'), '998001')
         self.assertEqual(multiply('2','99'), '198')
+        self.assertEqual(multiply('567','765'), '433755')
 #        self.assertEqual(multiply('',''), '')
 
     def test_edge(self):
