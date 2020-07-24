@@ -39,7 +39,7 @@ def divide(a,b):
     bottom = b      #dividend
     is_pos = ''     #flag if the number is still positive
     column_digit = 0#keeping track of what the digit is for the column
-    temp_top = ''
+    temp_top = ''   #
 ##    print('s: {}, top: {}, bottom: {}, is_pos: {}, column_digit: {}, temp_top: {}'.format(s,top,bottom,is_pos,column_digit,temp_top))
 
 ##    print('starting loops')

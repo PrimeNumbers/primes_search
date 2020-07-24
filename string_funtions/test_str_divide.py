@@ -1,7 +1,7 @@
 import unittest
 from str_divide import divide
 
-class TestMultiplyStrings(unittest.TestCase):
+class TestDivideStrings(unittest.TestCase):
 
     #cases to test
     # divide by 0 error
@@ -20,7 +20,7 @@ class TestMultiplyStrings(unittest.TestCase):
         self.assertEqual(divide('567','765'), '0')
         self.assertEqual(divide('500','100'), '5')
         self.assertEqual(divide('10000','1000'), '10')        
-#        self.assertEqual(multiply('',''), '')
+#        self.assertEqual(divide('',''), '')
 
     def test_edge(self):
         #should be if either is 0
@@ -30,7 +30,7 @@ class TestMultiplyStrings(unittest.TestCase):
         #negative should find it based on either being negative
         self.assertEqual(divide('-123','1234'), '-')
         self.assertEqual(divide('123','-456'), '-')
-        #large multiplication
+        #large divide
         self.assertEqual(divide('987654321987654321987654321','123456789123456789123456789'), '8')
 
 if __name__ == '__main__':
