@@ -10,7 +10,7 @@
 from str_add import add
 from str_subtract import subtract
 from str_multiply import multiply
-from str_divide import divide
+##from str_divide import divide
 from math import floor,sqrt
 
 
