@@ -1,0 +1,28 @@
+positive osculator
+	in positive osculator you have to multiply the osculator with the last digit and add to the rest of numbers
+
+negative osculator
+	in negative osculator you have to multiply the osculator with the last digit and subtract to the rest of the numbers
+	
+	
+	
+	
+positive osculator
+	for numbers ending in 9
+	9, 19, 29, 59, have (0+1=1), (1+1 = 2), (2+1=3), and (5+1=6) as osculator
+	
+	for numbers ending in 3
+	we multiply the number by 3 so the last digit becomes 9 and then apply the above rule
+	
+	13, 23, 33 when multiplied by 3 gives 39, 69, 99 and their respective osculators are (3+1=4), (6+1=7), (9+1=10)
+	
+
+
+negative osculator
+	for numbers ending in 1, simply drop the last digit and the number that is left is the osculator
+	e.g. 21, 31, 41, 51   we have 2, 3, 4, 5, as negative osculator
+
+	for numbers ending in 7, we multiply the number by 3 and so the last digit becomes 1 and then apply the above rule
+	
+	e.g.
+	7, 17, 37, when multiplied by 3 give 21, 51, and 111, and their respective osculators are 2, 5, and 11

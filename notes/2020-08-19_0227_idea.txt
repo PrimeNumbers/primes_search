@@ -1,0 +1,12 @@
+hypothesis:
+
+Are more prime numbers found between the limits of where digits overlap?
+
+e.g.
+	97 * 97 = 9409
+	there are 10,000 - 9409 = 591 numbers
+	eliminating numbers that end in even or 5 leaves about 236 candidates
+
+
+that's a pretty narrow cluster target, but worth checking out
+	

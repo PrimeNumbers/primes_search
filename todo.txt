@@ -1,0 +1,31 @@
+xfer_mover
+	didn't finish making rules for each folder
+	
+state
+	set_state incomplete
+	missing test_state
+
+
+
+
+I need to polish up the xfer mover to move files to the correct spot
+	from candidate, to eval
+	from eval, rename, move to next found
+	from eval to remove
+	from remove to removed
+	
+
+
+add to interface:
+	this session has found X primes and eliminated Y candidates
+	Most recent prime was ___ candidates ago.
+						  (just found!)
+
+
+
+
+Then flesh out the interface to be calling to the xfer mover functions
+
+	interface should say, while search is set to true:
+		start the xfer_mover sequence
+		

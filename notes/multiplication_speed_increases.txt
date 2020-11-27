@@ -1,0 +1,10 @@
+karatsuba algorithm
+
+multiplying large numbers quickly
+
+
+
+there are other fast algorithms for doing this too
+
+if i'm looking for speed increases in the multiplication area, maybe look at these?
+

@@ -1,0 +1,3 @@
+these known primes have their own algorithms
+which are called on from reject.py
+and eliminated used to eliminate numbers before they are generated as a candidate from candidate.py

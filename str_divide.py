@@ -68,7 +68,7 @@ def divide(a,b):
 ##                print('column_digit after: {}'.format(column_digit))
 
 ##                print('top before: {}'.format(top))
-                tmep_top = temp_top.lstrip('0')
+                temp_top = temp_top.lstrip('0')
                 top = temp_top
 ##                print('top after: {}'.format(top))
 

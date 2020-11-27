@@ -127,3 +127,20 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+
+
+#project_files
+# All the found primes need to be stored and distributed
+# by alternative means as to not clog up the project
+found/
+candidates/
+candidate_last/
+
+
+# copy contents of found_template/ to found/ if starting from scratch
+# copy the contents of candidate_last_template/ to candidate_last/
+
+
+#when the candidates get really long, it'll need a different folder structure
+zz_long_primes_work
